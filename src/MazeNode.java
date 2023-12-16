@@ -12,6 +12,8 @@ public class MazeNode {
     // Identifies the type of the node 'start, finish or standard'
     private final MazeNodeType type;
 
+    private MazeNode parent;
+
      public MazeNode(MazeNodeType type) {
          this.type = type;
      }
@@ -34,5 +36,14 @@ public class MazeNode {
     public MazeNodeType getType() {
         return type;
     }
+
+    public MazeNode getParent() {
+        return parent;
+    }
+
+    public void setParent(MazeNode parent) {
+        this.parent = parent;
+    }
+
 
 }
