@@ -6,16 +6,16 @@ public class DFSSolver {
 
     // if this algorithm can solve the maze it returns the path from start to end
     // if it can't solve, returns null
-    public static ArrayList<MazeNode> solve(Maze host) {
+    public static ArrayList<GraphNode> solve(Graph host) {
 
         // stores the nodes which are already visited
-        ArrayList<MazeNode> visitedNodes = new ArrayList<>();
+        ArrayList<GraphNode> visitedNodes = new ArrayList<>();
 
         // stores the nodes which are waiting to be explored
-        Queue<MazeNode> toBeVisitedNodes = new LinkedList<>();
+        Queue<GraphNode> toBeVisitedNodes = new LinkedList<>();
 
         // if DFS finds the finish, assign it to this variable to backtrack the path
-        MazeNode finishNode = null;
+        GraphNode finishNode = null;
 
         // boilerplate to kick-start the algorithm
         toBeVisitedNodes.add(host.getStartNode());
@@ -24,18 +24,18 @@ public class DFSSolver {
         while (!toBeVisitedNodes.isEmpty()) {
 
             // get a node from the queue
-            MazeNode currentNode = toBeVisitedNodes.remove();
+            GraphNode currentNode = toBeVisitedNodes.remove();
 
             // add this node among the visited nodes
             visitedNodes.add(currentNode);
 
             // if this node is the finish
-            if (currentNode.getType() == MazeNodeType.FINISH_NODE) {
+            if (currentNode.getType() == GraphNodeType.FINISH_NODE) {
                 finishNode = currentNode;
                 break;
             }
 
-            for (MazeNode node : currentNode.getNeighbors()) {
+            for (GraphNode node : currentNode.getNeighbors()) {
 
                 // if node doesn't have a neighbor in this direction
                 if (node == null) {
@@ -57,8 +57,8 @@ public class DFSSolver {
 
         }
 
-        ArrayList<MazeNode> path = new ArrayList<>();
-        MazeNode iteratorNode = finishNode;
+        ArrayList<GraphNode> path = new ArrayList<>();
+        GraphNode iteratorNode = finishNode;
 
         while (iteratorNode != null) {
 
