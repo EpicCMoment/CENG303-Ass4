@@ -166,15 +166,14 @@ public class Graph {
 
         for (int i = 0; i < mazeGraph.length; i++){
 
-
-
             for(int j = 0; j < mazeGraph.length; j++){
 
                 if(mazeGraph[i][j] != null){
 
                     if(i + 1 < mazeGraph[0].length && mazeGraph[i][j].getNeighbors().contains(mazeGraph[i+1][j])){
                         verticalLines[j] = "| ";
-                    } else {
+                    } 
+                    else {
                         verticalLines[j] = "  ";
                     }
 
@@ -185,15 +184,13 @@ public class Graph {
                     else{
                         System.out.print("o ");
                     }
-                } else {
+                } 
+                else {
                     System.out.print("  ");
                 }
 
-
-
             }
             System.out.println();
-
 
             for (var ch : verticalLines) {
 
@@ -201,10 +198,6 @@ public class Graph {
 
             }
             System.out.println();
-
         }
     }
-
-
-
 }
