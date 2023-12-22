@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class BFSolver {
+public class BFSSolver {
 
     // Bu algoritma labirenti çözebiliyorsa başlangıçtan bitişe olan yolu döndürür,
     // çözüm bulamazsa null döndürür.
@@ -64,7 +64,7 @@ public class BFSolver {
         while (iteratorNode != null) {
 
             // Yolu geri izlemek için iteratorNode'u listeye ekle
-            path.add(iteratorNode);
+            path.addFirst(iteratorNode);
 
             // Geri izlemeye devam etmek için parent düğümü al
             iteratorNode = iteratorNode.getParent();

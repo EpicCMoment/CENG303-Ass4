@@ -62,7 +62,7 @@ public class DFSSolver {
 
         while (iteratorNode != null) {
 
-            path.add(iteratorNode);
+            path.addFirst(iteratorNode);
 
             // get parent to continue backtracking
             iteratorNode = iteratorNode.getParent();

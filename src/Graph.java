@@ -51,8 +51,8 @@ public class Graph {
                     if(mazeGraph[xposNode1][yposNode1] == null){
 
                         //Creates two new nodes since both the positions are free.
-                        GraphNode newNode1 = new GraphNode(GraphNodeType.STANDARD_NODE);
-                        GraphNode newNode2 = new GraphNode(GraphNodeType.STANDARD_NODE);
+                        GraphNode newNode1 = new GraphNode(GraphNodeType.STANDARD_NODE, xposNode1, yposNode1);
+                        GraphNode newNode2 = new GraphNode(GraphNodeType.STANDARD_NODE, xposNode2, yposNode1);
 
                         addEdge(newNode1, newNode2);
 
@@ -64,7 +64,7 @@ public class Graph {
 
                         //Creates a new node for lower position since the upper node exists.
                         GraphNode existentNode = mazeGraph[xposNode1][yposNode1];
-                        GraphNode newNode2 = new GraphNode(GraphNodeType.STANDARD_NODE);
+                        GraphNode newNode2 = new GraphNode(GraphNodeType.STANDARD_NODE, xposNode2, yposNode1);
 
                         addEdge(existentNode, newNode2);
 
@@ -98,7 +98,7 @@ public class Graph {
 
                         //Creates a new node for right position since the left node exists.
                         GraphNode existentNode = mazeGraph[xposNode1][yposNode1];
-                        GraphNode newNode2 = new GraphNode(GraphNodeType.STANDARD_NODE);
+                        GraphNode newNode2 = new GraphNode(GraphNodeType.STANDARD_NODE, xposNode1,yposNode2);
 
                         addEdge(existentNode, newNode2);
 
@@ -109,7 +109,7 @@ public class Graph {
 
                         //Creates a new node for left position since the right node exists.
                         GraphNode existentNode = mazeGraph[xposNode1][yposNode2];
-                        GraphNode newNode2 = new GraphNode(GraphNodeType.STANDARD_NODE);
+                        GraphNode newNode2 = new GraphNode(GraphNodeType.STANDARD_NODE, xposNode1, yposNode1);
 
                         addEdge(existentNode, newNode2);
 
@@ -127,8 +127,8 @@ public class Graph {
                     else {
 
                         //Creates two new nodes since both the positions are free.
-                        GraphNode newNode1 = new GraphNode(GraphNodeType.STANDARD_NODE);
-                        GraphNode newNode2 = new GraphNode(GraphNodeType.STANDARD_NODE);
+                        GraphNode newNode1 = new GraphNode(GraphNodeType.STANDARD_NODE, xposNode1, yposNode1);
+                        GraphNode newNode2 = new GraphNode(GraphNodeType.STANDARD_NODE, xposNode1, yposNode2);
 
                         addEdge(newNode1, newNode2);
 
@@ -162,6 +162,8 @@ public class Graph {
 
     public void display() {
 
+        System.out.println("\033[34;1;1m" + "******** Topology of The Maze ********\n" + "\033[0m");
+
         String[] verticalLines = new String[mazeGraph.length];
 
         for (int i = 0; i < mazeGraph.length; i++){
@@ -169,6 +171,12 @@ public class Graph {
             for(int j = 0; j < mazeGraph.length; j++){
 
                 if(mazeGraph[i][j] != null){
+
+                    if (i == 0 && j == 0) {
+                        System.out.print("\033[92;2;1m");
+                    } else if ((i == mazeGraph.length - 1) && (j == mazeGraph.length - 1)) {
+                        System.out.print("\033[91;2;1m");
+                    }
 
                     if(i + 1 < mazeGraph[0].length && mazeGraph[i][j].getNeighbors().contains(mazeGraph[i+1][j])){
                         verticalLines[j] = "| ";
@@ -188,6 +196,8 @@ public class Graph {
                 else {
                     System.out.print("  ");
                 }
+
+                System.out.print("\033[0m");
 
             }
             System.out.println();

@@ -55,10 +55,74 @@ public class Main {
         Graph graph = new Graph(20,20);
         graph.generate(horizontal, vertical);
 
-        ArrayList<GraphNode> path = DFSSolver.solve(graph);
-
-        System.out.println(path.size());
 
         graph.display();
+
+        ArrayList<GraphNode> path;
+
+        path = DFSSolver.solve(graph);
+
+        System.out.println("Length of the path (DFS Generated): " + path.size());
+
+        displayPath(path);
+
+        path = BFSSolver.solve(graph);
+
+        System.out.println("Length of the path (BFS Generated): " + path.size());
+
+        displayPath(path);
+
+
+    }
+
+    private static void displayPath(ArrayList<GraphNode> path) {
+
+        int prevXIndex = path.getFirst().x_index;
+        int prevYIndex = path.getFirst().y_index;
+
+        String[] colors = {
+                "\033[31;1;1m",
+                "\033[32;1;1m",
+                "\033[33;1;1m",
+                "\033[34;1;1m",
+                "\033[35;1;1m",
+                "\033[36;1;1m",
+        };
+
+        for (int i = 0; i < path.size(); i++) {
+
+
+            GraphNode currentNode = path.get(i);
+
+
+            if (currentNode.x_index < prevXIndex) {
+                System.out.println(" <-- ");
+            } else if (currentNode.x_index > prevXIndex) {
+                System.out.println(" --> ");
+            } else if (currentNode.y_index < prevYIndex) {
+                System.out.println(" ↑ ");
+            } else if (currentNode.y_index > prevYIndex) {
+                System.out.println(" ↓ ");
+            } else {
+                System.out.println();
+            }
+
+
+            System.out.print(colors[(i / 5) % colors.length]);
+
+
+            System.out.print(i+1 + ") ");
+
+            System.out.print(currentNode);
+
+
+            prevXIndex = currentNode.x_index;;
+            prevYIndex = currentNode.y_index;
+
+        }
+
+        System.out.println("\033[0m\n\n");
+
+
     }
 }

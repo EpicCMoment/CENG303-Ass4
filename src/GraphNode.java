@@ -9,9 +9,16 @@ public class GraphNode {
 
     private GraphNode parent;
 
-     public GraphNode(GraphNodeType type) {
+    public int x_index;
+    public int y_index;
+
+     public GraphNode(GraphNodeType type, int x_index, int y_index) {
          this.neighbors = new LinkedList<>();
          this.type = type;
+
+         this.x_index = y_index;
+         this.y_index = x_index;
+
      }
 
     public void setNeighbors(GraphNode neighborNode){
@@ -34,6 +41,12 @@ public class GraphNode {
 
     public void setParent(GraphNode parent) {
         this.parent = parent;
+    }
+
+    public String toString() {
+
+         return String.format("[%d, %d]", x_index, y_index);
+
     }
 
 
