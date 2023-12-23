@@ -2,127 +2,48 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        int[][] horizontal = {
-                {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-                {0,1,1,0,0,1,0,1,1,1,1,0,1,0,0,1,0,0,1,0},
-                {0,0,1,0,0,1,1,0,1,0,0,1,0,0,0,0,0,1,0,0},
-                {0,1,1,1,0,0,1,1,0,0,0,0,1,0,0,1,0,0,1,1},
-                {1,1,0,0,0,0,0,0,1,0,1,1,1,1,0,0,0,0,0,0},
-                {0,1,1,1,1,1,0,0,1,1,0,1,1,1,1,0,0,0,0,0},
-                {1,0,0,0,1,0,0,1,1,0,1,0,1,1,1,1,1,1,1,0},
-                {0,1,0,0,1,1,0,0,1,0,1,1,1,1,1,1,1,1,1,0},
-                {1,0,1,1,0,0,1,1,0,0,0,1,0,1,0,1,0,0,1,0},
-                {0,1,1,0,0,0,0,0,1,1,0,0,1,1,1,0,1,0,0,0},
-                {0,1,0,1,1,0,0,1,0,0,1,1,0,0,0,1,0,0,0,0},
-                {1,0,0,0,0,1,0,0,1,1,0,1,1,0,1,1,1,1,1,0},
-                {1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,1,1,0,0,1},
-                {0,0,0,1,0,1,1,1,1,0,1,1,0,0,0,0,1,0,0,0},
-                {0,0,0,0,1,1,0,0,0,1,0,0,1,0,1,1,1,0,0,0},
-                {0,0,0,1,0,1,1,1,1,0,0,0,0,1,1,1,0,1,0,0},
-                {0,0,0,1,0,1,1,1,1,0,0,0,0,1,1,1,0,1,0,0},
-                {0,1,0,1,1,0,1,1,1,1,0,1,1,1,1,0,1,0,1,0},
-                {0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1,1,1,0,0},
-                {1,0,0,1,0,0,1,0,0,1,1,1,0,1,1,0,1,1,0,0},
-                {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+
+        // our code works with square mazes
+
+        // you can insert your custom maze below
+
+        int[][] horizontalWalls = {
+
+
+        };
+
+        int[][] verticalWalls = {
+
+
         };
 
 
-        int[][] vertical = {
-                {1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,1,0,1,0,0,1},
-                {1,1,0,1,1,1,0,1,0,0,0,1,0,1,1,0,1,1,0,1,1},
-                {1,1,0,0,1,1,0,0,1,0,1,1,0,1,1,1,0,1,0,1,1},
-                {1,0,0,1,1,1,1,0,0,1,1,0,0,0,1,0,1,1,1,0,1},
-                {1,0,1,0,0,0,1,1,1,0,1,0,0,0,0,1,1,1,1,1,1},
-                {1,0,1,0,1,0,1,1,0,0,1,0,1,0,0,0,1,0,1,0,1},
-                {1,0,1,1,0,0,1,1,0,1,0,1,0,0,0,0,0,0,0,0,1},
-                {1,0,0,1,0,0,1,1,0,1,1,0,1,0,0,1,0,1,0,0,1},
-                {1,0,1,0,1,1,1,0,1,0,0,1,0,0,1,0,0,1,1,1,1},
-                {1,0,1,0,1,1,1,1,1,0,0,1,0,1,0,1,1,0,1,1,1},
-                {1,0,1,0,1,0,1,1,0,1,0,0,0,1,1,0,0,1,0,1,1},
-                {1,0,1,1,1,1,0,1,1,0,0,1,0,1,1,0,0,0,1,0,1},
-                {1,0,1,1,1,1,0,0,1,0,1,0,1,1,1,1,0,1,1,1,1},
-                {1,1,1,1,0,1,0,0,1,0,1,1,0,1,0,1,0,0,1,1,1},
-                {1,1,1,0,1,0,0,1,0,0,1,1,0,1,0,0,0,1,1,1,1},
-                {1,1,1,0,0,1,0,0,0,0,1,0,1,0,0,0,1,0,1,0,1},
-                {1,0,1,1,0,1,1,0,1,0,1,1,0,0,1,0,0,1,0,1,1},
-                {1,1,1,0,1,1,0,1,1,1,0,0,1,0,1,0,0,0,1,1,1},
-                {1,0,1,0,1,0,1,1,1,0,1,0,0,1,0,0,0,1,0,1,1},
-                {1,0,1,0,1,0,1,1,1,0,1,0,0,1,0,0,0,1,0,1,1}
-        };
+        Graph maze = new Graph(horizontalWalls.length-1, verticalWalls.length);
 
-        Graph graph = new Graph(20,20);
-        graph.generate(horizontal, vertical);
+        maze.generate(horizontalWalls, verticalWalls);
 
+        maze.display();
 
-        graph.display();
+        ArrayList<GraphNode> pathToSolution;
 
-        ArrayList<GraphNode> path;
+        pathToSolution = DFSSolver.solve(maze);
 
-        path = DFSSolver.solve(graph);
+        System.out.println("Length of the path to the solution (DFS Generated): " + pathToSolution.size());
 
-        System.out.println("Length of the path (DFS Generated): " + path.size());
+        Graph.displayPath(pathToSolution);
 
-        displayPath(path);
+        pathToSolution = BFSSolver.solve(maze);
 
-        path = BFSSolver.solve(graph);
+        System.out.println("Length of the path to the solution (BFS Generated): " + pathToSolution.size());
 
-        System.out.println("Length of the path (BFS Generated): " + path.size());
-
-        displayPath(path);
+        Graph.displayPath(pathToSolution);
 
 
     }
 
-    private static void displayPath(ArrayList<GraphNode> path) {
-
-        int prevXIndex = path.getFirst().x_index;
-        int prevYIndex = path.getFirst().y_index;
-
-        String[] colors = {
-                "\033[31;1;1m",
-                "\033[32;1;1m",
-                "\033[33;1;1m",
-                "\033[34;1;1m",
-                "\033[35;1;1m",
-                "\033[36;1;1m",
-        };
-
-        for (int i = 0; i < path.size(); i++) {
 
 
-            GraphNode currentNode = path.get(i);
 
-
-            if (currentNode.x_index < prevXIndex) {
-                System.out.println(" <-- ");
-            } else if (currentNode.x_index > prevXIndex) {
-                System.out.println(" --> ");
-            } else if (currentNode.y_index < prevYIndex) {
-                System.out.println(" ↑ ");
-            } else if (currentNode.y_index > prevYIndex) {
-                System.out.println(" ↓ ");
-            } else {
-                System.out.println();
-            }
-
-
-            System.out.print(colors[(i / 5) % colors.length]);
-
-
-            System.out.print(i+1 + ") ");
-
-            System.out.print(currentNode);
-
-
-            prevXIndex = currentNode.x_index;;
-            prevYIndex = currentNode.y_index;
-
-        }
-
-        System.out.println("\033[0m\n\n");
-
-
-    }
 }
