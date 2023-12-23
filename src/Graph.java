@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Graph {
 
     //Saves the location of nodes in the graph.
@@ -162,7 +164,8 @@ public class Graph {
 
     public void display() {
 
-        System.out.println("\033[34;1;1m" + "******** Topology of The Maze ********\n" + "\033[0m");
+
+        System.out.println("\033[34;1;1m" + "########## Topology of The Maze ##########\n" + "\033[0m");
 
         String[] verticalLines = new String[mazeGraph.length];
 
@@ -209,5 +212,65 @@ public class Graph {
             }
             System.out.println();
         }
+
+
+        System.out.println("\033[34;1;1m" + "##########################################\n" + "\033[0m");
+    }
+
+
+    public static void displayPath(ArrayList<GraphNode> path) {
+
+        if (path.isEmpty()) {
+            System.out.println("\033[31;1;1m" + "THERE IS NO SOLUTION FOR THIS MAZE!!" + "\033[0m" + "\n\n");
+            return;
+        }
+
+        int prevXIndex = path.getFirst().x_index;
+        int prevYIndex = path.getFirst().y_index;
+
+        String[] colors = {
+                "\033[31;1;1m",
+                "\033[32;1;1m",
+                "\033[33;1;1m",
+                "\033[34;1;1m",
+                "\033[35;1;1m",
+                "\033[36;1;1m",
+        };
+
+        for (int i = 0; i < path.size(); i++) {
+
+
+            GraphNode currentNode = path.get(i);
+
+
+            if (currentNode.x_index < prevXIndex) {
+                System.out.println(" ← ");
+            } else if (currentNode.x_index > prevXIndex) {
+                System.out.println(" → ");
+            } else if (currentNode.y_index < prevYIndex) {
+                System.out.println(" ↑ ");
+            } else if (currentNode.y_index > prevYIndex) {
+                System.out.println(" ↓ ");
+            } else {
+                System.out.println();
+            }
+
+
+            System.out.print(colors[(i / 5) % colors.length]);
+
+
+            System.out.print(i+1 + ") ");
+
+            System.out.print(currentNode);
+
+
+            prevXIndex = currentNode.x_index;;
+            prevYIndex = currentNode.y_index;
+
+        }
+
+        System.out.println("\033[0m\n\n");
+
+
     }
 }
