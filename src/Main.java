@@ -4,9 +4,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        // our code works with square mazes
-
         // you can insert your custom maze below
 
         int[][] horizontalWalls = {
@@ -18,6 +15,11 @@ public class Main {
 
 
         };
+
+        if ((horizontalWalls.length == 0) || (verticalWalls.length == 0)) {
+            System.err.println("Please insert array representation of the maze into the source code, then compile and run the code.");
+            return;
+        }
 
 
         Graph maze = new Graph(horizontalWalls.length-1, verticalWalls.length);
